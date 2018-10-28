@@ -5,7 +5,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Test.
+ * Tests for Calculator.
  *
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com)
  * @version $Id$
@@ -13,6 +13,9 @@ import static org.junit.Assert.assertThat;
  */
 public class CalculatorTest {
 
+    /**
+     * Test for addition method.
+     */
     @Test
     public void whenAddOnePlusOneThenTwo() {
         Calculator calc = new Calculator();
@@ -22,6 +25,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 
+    /**
+     * Test for subtraction method.
+     */
     @Test
     public void whenTwoMinusOneThenOne() {
         Calculator calc = new Calculator();
@@ -31,6 +37,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 
+    /**
+     * Test for division method.
+     */
     @Test
     public void whenTenDivByTwoThenFive() {
         Calculator calc = new Calculator();
@@ -40,6 +49,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 
+    /**
+     * Test for multiplication method.
+     */
     @Test
     public void whenTwoMultipliedByTwoThenFour() {
         Calculator calc = new Calculator();
