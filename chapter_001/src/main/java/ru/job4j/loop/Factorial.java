@@ -13,14 +13,12 @@ public class Factorial {
      * @return Факториал введенного числа.
      */
     public int calc(int n) {
-        if (n == 0) {
-            return 1;
-        } else {
-            int factorial = 1;
+        int factorial = 1;
+        if (n != 0) {
             for (int i = 1; i <= n; i++) {
                 factorial = factorial * i;
             }
-            return factorial;
         }
+        return factorial;
     }
 }
