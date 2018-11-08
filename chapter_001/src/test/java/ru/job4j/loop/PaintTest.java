@@ -15,6 +15,42 @@ import static org.junit.Assert.*;
 public class PaintTest {
 
     /**
+     * Test for rightTrl with height = 3.
+     */
+    @Test
+    public void whenHeight3ThenRightTrl3() {
+        Paint paint = new Paint();
+        String rst = paint.rightTrl(3);
+        assertThat(rst,
+                is(
+                        new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                                .add("^  ")
+                                .add("^^ ")
+                                .add("^^^")
+                                .toString()
+                )
+        );
+    }
+
+    /**
+     * Test for leftTrl with height = 3.
+     */
+    @Test
+    public void whenHeight3ThenLeftTrl3() {
+        Paint paint = new Paint();
+        String rst = paint.leftTrl(3);
+        assertThat(rst,
+                is(
+                        new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                                .add("  ^")
+                                .add(" ^^")
+                                .add("^^^")
+                                .toString()
+                )
+        );
+    }
+
+    /**
      * Test for pyramid with height = 3.
      */
     @Test
