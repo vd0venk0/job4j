@@ -3,9 +3,9 @@ package ru.job4j.condition;
 import java.lang.Math;
 
 /**
+ * Triangle.
+ * Треугольник.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
- * @version $Id$.
- * @since 0.1.
  */
 public class Triangle {
 
@@ -47,7 +47,7 @@ public class Triangle {
     }
 
     /**
-     * Существование треугольника.
+     * Метод проверяет уществование треугольника.
      * @param ab - сторона ab.
      * @param ac - сторона ac.
      * @param bc - сторона bc.

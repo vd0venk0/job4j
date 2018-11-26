@@ -4,8 +4,8 @@ import java.util.function.BiPredicate;
 
 /**
  * Paint.
- *
- * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com)
+ * Рисование треугольников и пирамид в псевдографике.
+ * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Paint {
 
@@ -50,10 +50,10 @@ public class Paint {
 
     /**
      *
-     * @param height
-     * @param weight
-     * @param predict
-     * @return
+     * @param height Высота пирамиды.
+     * @param weight Ширина пирамиды.
+     * @param predict Условие проставления галки (дженерик).
+     * @return Псевдографика.
      */
     private String loopBy(int height, int weight, BiPredicate<Integer, Integer> predict) {
         StringBuilder screen = new StringBuilder();

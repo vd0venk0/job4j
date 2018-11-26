@@ -1,12 +1,16 @@
 package ru.job4j.array;
 /**
  * ArrayChar.
- * Обертка над срокой.
+ * Проверка, что слово начинается с префикса.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class ArrayChar {
     private char[] data;
 
+    /**
+     * Обёртка над строкой.
+     * @param line Входящая строка.
+     */
     public ArrayChar(String line) {
         this.data = line.toCharArray();
     }

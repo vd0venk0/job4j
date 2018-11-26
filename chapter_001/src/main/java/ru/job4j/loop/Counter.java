@@ -2,7 +2,7 @@ package ru.job4j.loop;
 
 /**
  * Counter.
- *
+ * Суммирование четных чисел в заданном диапазоне.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Counter {

@@ -2,7 +2,7 @@ package ru.job4j.loop;
 
 /**
  * Board.
- *
+ * Рисуем шахматную доску.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Board {
@@ -28,9 +28,4 @@ public class Board {
         }
         return screen.toString();
     }
-    /** // Проверка с выводом на консоль:
-    public static void main(String[] args) {
-        Board board = new Board();
-        System.out.println(board.paint(5, 5));
-    }*/
 }

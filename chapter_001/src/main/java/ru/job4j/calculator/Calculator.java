@@ -1,8 +1,8 @@
 package ru.job4j.calculator;
 
 /**
- * Calculator
- *
+ * Calculator.
+ * Простейшие арифметические операции.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com)
  */
 public class Calculator {

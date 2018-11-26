@@ -8,7 +8,7 @@ package ru.job4j.calculate;
 public class Calculate {
 
     /**
-    * Main
+    * Тройное эхо.
     * @param args - args.
     */
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Calculate {
     }
         
     /**
-    * Method echo.
+    * Метод откликается тройным эхом на входящее имя.
     * @param name Your name.
     * @return Echo plus your name.
     */

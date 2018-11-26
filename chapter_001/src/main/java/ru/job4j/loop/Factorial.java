@@ -2,7 +2,7 @@ package ru.job4j.loop;
 
 /**
  * Factorial.
- *
+ * Расчет факториала числа.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Factorial {

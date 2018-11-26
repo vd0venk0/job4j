@@ -3,9 +3,9 @@ package ru.job4j.condition;
 import java.lang.Math;
 
 /**
+ * Point.
+ * Определение расстояния между текущей и входящей точками.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
- * @version $Id$.
- * @since 0.1.
  */
 public class Point {
 
@@ -32,13 +32,4 @@ public class Point {
                 Math.pow((double) (this.x - that.x), 2D) + Math.pow((double) (this.y - that.y), 2D)
         );
     }
-
-//  Проверим работу класса через консоль:
-//    public static void main(String[] args) {
-//        Point a = new Point(0, 0);
-//        Point b = new Point(3, 4);
-//        System.out.println(a.distanceTo(b));
-//
-//    }
-
 }

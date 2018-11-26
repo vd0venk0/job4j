@@ -1,7 +1,7 @@
 package ru.job4j.array;
 /**
  * Square.
- *
+ * Генерация массива квадратов чисел на основании длины  массива.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Square {
@@ -12,10 +12,10 @@ public class Square {
      * @return Массив квадратов чисел.
      */
     public int[] calculate(int bound) {
-        int[] rst = new int[bound];
+        int[] result = new int[bound];
         for (int i = 0; i < bound; i++) {
-            rst[i] = (int) Math.pow((double) i + 1, 2D);
+            result[i] = (int) Math.pow((double) i + 1, 2D);
         }
-        return rst;
+        return result;
     }
 }

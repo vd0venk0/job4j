@@ -1,7 +1,7 @@
 package ru.job4j.array;
 /**
  * Turn.
- *
+ * Переворот входного массива.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Turn {

@@ -1,6 +1,7 @@
 package ru.job4j.max;
 
 /**
+ * Max.
  * Программа для поиска максимального числа из двух введенных.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */

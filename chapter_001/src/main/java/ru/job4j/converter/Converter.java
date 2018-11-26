@@ -1,8 +1,8 @@
 package ru.job4j.converter;
 /**
- * Converter
- *
- * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com)
+ * Converter.
+ * Конвертер валют.
+ * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Converter {
 

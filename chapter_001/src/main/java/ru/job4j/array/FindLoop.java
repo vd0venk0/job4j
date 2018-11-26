@@ -1,7 +1,7 @@
 package ru.job4j.array;
 /**
  * FindLoop.
- *
+ * Поиск в массиве определенного элемента и возвращение его индекса.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class FindLoop {

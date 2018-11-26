@@ -1,7 +1,7 @@
 package ru.job4j.array;
 /**
  * Check.
- *
+ * Проверка на однородность массива.
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Check {
