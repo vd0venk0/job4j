@@ -13,7 +13,7 @@ public class Tracker {
     private static final Random RN = new Random();
 
     /**
-     * Метод добавляет заявку, переданную в аргументах в массив заявок this.items.
+     * Метод добавляет заявку в трекер.
      * @param item Элемент.
      * @return Элемент.
      */
