@@ -17,6 +17,11 @@ public class Item {
         this.create = create;
     }
 
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public String getName() {
         return this.name;
     }
