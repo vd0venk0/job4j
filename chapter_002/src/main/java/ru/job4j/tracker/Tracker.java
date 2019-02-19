@@ -105,15 +105,14 @@ public class Tracker {
      * @return Найденный элемент.
      */
     public Item findById(String id) {
-        Item result = null;
-        for (Item item : this.items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
-                break;
+            Item result = null;
+            for (Item item : this.items) {
+                if (item != null && item.getId().equals(id)) {
+                    result = item;
+                    break;
+                }
             }
-        }
-        return result;
-
+            return result;
     }
 
     /**

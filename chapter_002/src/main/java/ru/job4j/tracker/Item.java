@@ -30,6 +30,14 @@ public class Item {
         return this.description;
     }
 
+    public void printItem() {
+        System.out.println("---------------------------");
+        System.out.println("Имя заявки: " + this.name);
+        System.out.println("Описание:   " + this.description);
+        System.out.println("ID заявки:  " + this.id);
+        System.out.println("---------------------------");
+    }
+
     public long getCreate() {
         return this.create;
     }
