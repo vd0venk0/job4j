@@ -104,8 +104,9 @@ public class StartUI {
     private void editTheItem() {
         System.out.println("+++++++++++++++ Изменение заявки ++++++++++++++++++");
         String id = this.input.ask("Введите ID изменяемой заявки: ");
-        if (tracker.findById(id) != null) {
-            Item item = tracker.findById(id);
+        Item foundItem = tracker.findById(id);
+        if (foundItem != null) {
+            Item item = foundItem;
             item.name = this.input.ask("Введите имя заявки :");
             item.description = this.input.ask("Введите описание заявки :");
             item.setId(id);
@@ -136,24 +137,26 @@ public class StartUI {
     private void findItemByID() {
         System.out.println("+++++++++++++++ Поиск заявки по ID ++++++++++++++++");
         String id = this.input.ask("Введите ID заявки для поиска: ");
-        if (tracker.findById(id) != null) {
+        Item foundItem = tracker.findById(id);
+        if (foundItem != null) {
             System.out.println("Заявка ID = " + id + " успешно найдена:");
-            tracker.findById(id).printItem();
+            foundItem.printItem();
         } else {
             System.out.println("Заявка с ID " + id + " не найдена.");
-        }
-    }
+     }
+     }
 
-    /**
+     /**
      * Метод реализует поиск заявки по имени.
      */
     private void findItemByName() {
         System.out.println("+++++++++++++++ Поиск заявки по имени ++++++++++++++++");
         String name = this.input.ask("Введите имя заявки для поиска: ");
-        if (tracker.findByName(name).length != 0) {
+        Item[] items = tracker.findByName(name);
+        if (items.length != 0) {
             System.out.println("Результаты поиска заявок с именем " + name + ":");
-            for (Item item : tracker.findByName(name)) {
-                item.printItem();
+                for (Item item : items) {
+                    item.printItem();
             }
         } else {
             System.out.println("Заявки с именем " + name + " не найдены.");
