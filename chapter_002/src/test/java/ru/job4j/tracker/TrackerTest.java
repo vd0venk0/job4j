@@ -4,6 +4,13 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
+/**
+ * Tests for ArrayChar.
+ *
+ * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
+ * @version $Id$.
+ * @since 0.1.
+ */
 public class TrackerTest {
 
     /**
