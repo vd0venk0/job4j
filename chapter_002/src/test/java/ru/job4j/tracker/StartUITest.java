@@ -1,6 +1,11 @@
 package ru.job4j.tracker;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.*;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -17,10 +22,14 @@ public class StartUITest {
      */
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        Tracker tracker = new Tracker(); // создаём Tracker.
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"}); //создаём StubInput с последовательностью действий (имитация действий пользователя).
-        new StartUI(input, tracker).init(); // создаём StartUI и вызываем метод init().
-        assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        // Создаём Tracker.
+        Tracker tracker = new Tracker();
+        //Создаём StubInput с последовательностью действий пользователя(имитируем действия пользователя).
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
+        // Создаём StartUI и вызываем метод init().
+        new StartUI(input, tracker).init();
+        // Проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        assertThat(tracker.findAll()[0].getName(), is("test name"));
     }
 
     /**
@@ -75,5 +84,84 @@ public class StartUITest {
         assertThat(tracker.findByName("testName")[1], is(item03));
     }
 
+    /**
+     * Test for ShowAllItems.
+     * Используем рефакторинг теста @Before @After
+     */
+    final PrintStream stdout = System.out;
+    final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
+    @Before
+    public void loadOutput() {
+        System.setOut(new PrintStream(out));
+    }
+
+    @After
+    public void backOutput() {
+        System.setOut(this.stdout);
+    }
+
+    @Test
+    public void whenShowAllItemsThenCorrectItems() {
+        Tracker tracker = new Tracker();
+        Item item01 = tracker.add(new Item("111", "111"));
+        Input input = new StubInput(new String[] {"1", "6"});
+        new StartUI(input, tracker).init();
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append("========== Menu: ==========")
+                                .append(System.lineSeparator())
+                                .append("0. Add New Item")
+                                .append(System.lineSeparator())
+                                .append("1. Show All Items")
+                                .append(System.lineSeparator())
+                                .append("2. Edit Item")
+                                .append(System.lineSeparator())
+                                .append("3. Delete Item")
+                                .append(System.lineSeparator())
+                                .append("4. Find Item By ID")
+                                .append(System.lineSeparator())
+                                .append("5. Find Items By Name")
+                                .append(System.lineSeparator())
+                                .append("6. Exit Program")
+                                .append(System.lineSeparator())
+                                .append("===========================")
+                                .append(System.lineSeparator())
+                                .append("+++++++++++++++++ Список заявок +++++++++++++++++++")
+                                .append(System.lineSeparator())
+                                .append("---------------------------")
+                                .append(System.lineSeparator())
+                                .append("Имя заявки: 111")
+                                .append(System.lineSeparator())
+                                .append("Описание:   111")
+                                .append(System.lineSeparator())
+                                .append("ID заявки:  ")
+                                .append(item01.getId())
+                                .append(System.lineSeparator())
+                                .append("---------------------------")
+                                .append(System.lineSeparator())
+                                .append("========== Menu: ==========")
+                                .append(System.lineSeparator())
+                                .append("0. Add New Item")
+                                .append(System.lineSeparator())
+                                .append("1. Show All Items")
+                                .append(System.lineSeparator())
+                                .append("2. Edit Item")
+                                .append(System.lineSeparator())
+                                .append("3. Delete Item")
+                                .append(System.lineSeparator())
+                                .append("4. Find Item By ID")
+                                .append(System.lineSeparator())
+                                .append("5. Find Items By Name")
+                                .append(System.lineSeparator())
+                                .append("6. Exit Program")
+                                .append(System.lineSeparator())
+                                .append("===========================")
+                                .append(System.lineSeparator())
+                                .toString()
+                )
+        );
+    }
 }

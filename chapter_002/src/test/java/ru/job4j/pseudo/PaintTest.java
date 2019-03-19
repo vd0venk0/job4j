@@ -14,21 +14,18 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class PaintTest {
-    // получаем ссылку на стандартный вывод в консоль.
-    private final PrintStream stdout = System.out;
-    // Создаем буфер для хранения вывода.
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final PrintStream stdout = System.out; // Получаем ссылку на стандартный вывод в консоль.
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream(); // Создаем буфер для хранения вывода.
 
     @Before //метод, выполняемый до запуска теста.
     public void loadOutput() {
         System.out.println("Execute before method.");
-        //Заменяем стандартный вывод на вывод в пямять для тестирования.
-        System.setOut(new PrintStream(out));
+        System.setOut(new PrintStream(out)); //Заменяем стандартный вывод на вывод в пямять для тестирования.
     }
+
     @After //метод, выполняемый после запуска теста.
     public void backOutput() {
-        // возвращаем обратно стандартный вывод в консоль.
-        System.setOut(this.stdout);
+        System.setOut(this.stdout); // Возвращаем обратно стандартный вывод в консоль.
         System.out.println("Execute after method.");
     }
 
@@ -37,9 +34,8 @@ public class PaintTest {
      */
     @Test
     public void whenDrawSquare() {
-        // выполняем действия пишушие в консоль.
-        new Paint().draw(new Square());
-        // проверяем результат вычисления
+        new Paint().draw(new Square()); // Выполняем действия пишушие в консоль.
+        // Проверяем результат вычисления
         assertThat(
                 new String(out.toByteArray()),
                 is(
