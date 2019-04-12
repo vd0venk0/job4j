@@ -17,8 +17,55 @@ import static org.junit.Assert.*;
  * @since 0.1.
  */
 public class StartUITest {
+
+    final PrintStream stdout = System.out;
+    final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+    /**
+     * Константа Меню.
+     * Уменьшаем объем тестов.
+     */
+    final StringBuilder menu = new StringBuilder()
+            .append("========== Menu: ==========")
+            .append(System.lineSeparator())
+            .append("0. Add New Item")
+            .append(System.lineSeparator())
+            .append("1. Show All Items")
+            .append(System.lineSeparator())
+            .append("2. Edit Item")
+            .append(System.lineSeparator())
+            .append("3. Delete Item")
+            .append(System.lineSeparator())
+            .append("4. Find Item By ID")
+            .append(System.lineSeparator())
+            .append("5. Find Items By Name")
+            .append(System.lineSeparator())
+            .append("6. Exit Program")
+            .append(System.lineSeparator())
+            .append("===========================")
+            .append(System.lineSeparator());
+
+    /**
+     * Before.
+     * Настраиваем вывод в байтовый массив.
+     */
+    @Before
+    public void loadOutput() {
+        System.setOut(new PrintStream(out));
+    }
+
+    /**
+     * After.
+     * Возвращаем стандартный вывод.
+     */
+    @After
+    public void backOutput() {
+        System.setOut(this.stdout);
+    }
+
     /**
      * Test for ADD Item.
+     * Используем рефакторинг теста @Before @After.
      */
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
@@ -30,10 +77,39 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         // Проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.findAll()[0].getName(), is("test name"));
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append(menu)
+                                .append("++++++++++++ Добавление новой заявки ++++++++++++++")
+                                .append(System.lineSeparator())
+                                .append("+++++ Создана новая заявка с ID : ")
+                                .append(tracker.findAll()[0].getId())
+                                .append(" +++++")
+                                .append(System.lineSeparator())
+                                .append("---------------------------")
+                                .append(System.lineSeparator())
+                                .append("Имя заявки: ")
+                                .append(tracker.findAll()[0].getName())
+                                .append(System.lineSeparator())
+                                .append("Описание:   ")
+                                .append(tracker.findAll()[0].getDescription())
+                                .append(System.lineSeparator())
+                                .append("ID заявки:  ")
+                                .append(tracker.findAll()[0].getId())
+                                .append(System.lineSeparator())
+                                .append("---------------------------")
+                                .append(System.lineSeparator())
+                                .append(menu)
+                                .toString()
+                )
+        );
     }
 
     /**
      * Test for EDIT Item.
+     * Используем рефакторинг теста @Before @After.
      */
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
@@ -41,11 +117,27 @@ public class StartUITest {
         Item item = tracker.add(new Item("test name", "desc"));
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
+//        assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append(menu)
+                                .append("+++++++++++++++ Изменение заявки ++++++++++++++++++")
+                                .append(System.lineSeparator())
+                                .append("Заявка ID = ")
+                                .append(item.getId())
+                                .append(" успешно изменена.")
+                                .append(System.lineSeparator())
+                                .append(menu)
+                                .toString()
+                )
+        );
     }
 
     /**
      * Test for DELETE Item.
+     * Используем рефакторинг теста @Before @After.
      */
     @Test
     public void whenDeleteThenTrackerHasUpdatedValue() {
@@ -54,11 +146,27 @@ public class StartUITest {
         Item item02 = tracker.add(new Item("testName02", "description02"));
         Input input = new StubInput(new String[] {"3", item01.getId(), "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is(item02.getName()));
+//        assertThat(tracker.findAll()[0].getName(), is(item02.getName()));
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append(menu)
+                                .append("++++++++++++++++ Удаление заявки ++++++++++++++++++")
+                                .append(System.lineSeparator())
+                                .append("Заявка ID = ")
+                                .append(item01.getId())
+                                .append(" успешно удалена.")
+                                .append(System.lineSeparator())
+                                .append(menu)
+                                .toString()
+                )
+        );
     }
 
     /**
      * Test for FindItemByID.
+     * Используем рефакторинг теста @Before @After.
      */
     @Test
     public void whenFindItemByIDThenCorrectItem() {
@@ -66,11 +174,40 @@ public class StartUITest {
         Item item01 = tracker.add(new Item("testName01", "description01"));
         Input input = new StubInput(new String[] {"4", item01.getId(), "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findById(item01.getId()).getId(), is(item01.getId()));
+//        assertThat(tracker.findById(item01.getId()).getId(), is(item01.getId()));
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append(menu)
+                                .append("+++++++++++++++ Поиск заявки по ID ++++++++++++++++")
+                                .append(System.lineSeparator())
+                                .append("Заявка ID = ")
+                                .append(item01.getId())
+                                .append(" успешно найдена:")
+                                .append(System.lineSeparator())
+                                .append("---------------------------")
+                                .append(System.lineSeparator())
+                                .append("Имя заявки: ")
+                                .append(item01.getName())
+                                .append(System.lineSeparator())
+                                .append("Описание:   ")
+                                .append(item01.getDescription())
+                                .append(System.lineSeparator())
+                                .append("ID заявки:  ")
+                                .append(item01.getId())
+                                .append(System.lineSeparator())
+                                .append("---------------------------")
+                                .append(System.lineSeparator())
+                                .append(menu)
+                                .toString()
+                )
+        );
     }
 
     /**
      * Test for FindItemsByName.
+     * Используем рефакторинг теста @Before @After.
      */
     @Test
     public void whenFindItemsByNameThenCorrectItems() {
@@ -80,27 +217,41 @@ public class StartUITest {
         Item item03 = tracker.add(new Item("testName", "description03"));
         Input input = new StubInput(new String[] {"5", "testName02", "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findByName("testName")[0], is(item01));
-        assertThat(tracker.findByName("testName")[1], is(item03));
+//        assertThat(tracker.findByName("testName02")[0], is(item02));
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append(menu)
+                                .append("+++++++++++++++ Поиск заявки по имени ++++++++++++++++")
+                                .append(System.lineSeparator())
+                                .append("Результаты поиска заявок с именем ")
+                                .append(item02.getName())
+                                .append(":")
+                                .append(System.lineSeparator())
+                                .append("---------------------------")
+                                .append(System.lineSeparator())
+                                .append("Имя заявки: ")
+                                .append(item02.getName())
+                                .append(System.lineSeparator())
+                                .append("Описание:   ")
+                                .append(item02.getDescription())
+                                .append(System.lineSeparator())
+                                .append("ID заявки:  ")
+                                .append(item02.getId())
+                                .append(System.lineSeparator())
+                                .append("---------------------------")
+                                .append(System.lineSeparator())
+                                .append(menu)
+                                .toString()
+                )
+        );
     }
 
     /**
      * Test for ShowAllItems.
-     * Используем рефакторинг теста @Before @After
+     * Используем рефакторинг теста @Before @After.
      */
-    final PrintStream stdout = System.out;
-    final ByteArrayOutputStream out = new ByteArrayOutputStream();
-
-    @Before
-    public void loadOutput() {
-        System.setOut(new PrintStream(out));
-    }
-
-    @After
-    public void backOutput() {
-        System.setOut(this.stdout);
-    }
-
     @Test
     public void whenShowAllItemsThenCorrectItems() {
         Tracker tracker = new Tracker();
@@ -111,24 +262,7 @@ public class StartUITest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("========== Menu: ==========")
-                                .append(System.lineSeparator())
-                                .append("0. Add New Item")
-                                .append(System.lineSeparator())
-                                .append("1. Show All Items")
-                                .append(System.lineSeparator())
-                                .append("2. Edit Item")
-                                .append(System.lineSeparator())
-                                .append("3. Delete Item")
-                                .append(System.lineSeparator())
-                                .append("4. Find Item By ID")
-                                .append(System.lineSeparator())
-                                .append("5. Find Items By Name")
-                                .append(System.lineSeparator())
-                                .append("6. Exit Program")
-                                .append(System.lineSeparator())
-                                .append("===========================")
-                                .append(System.lineSeparator())
+                                .append(menu)
                                 .append("+++++++++++++++++ Список заявок +++++++++++++++++++")
                                 .append(System.lineSeparator())
                                 .append("---------------------------")
@@ -142,24 +276,7 @@ public class StartUITest {
                                 .append(System.lineSeparator())
                                 .append("---------------------------")
                                 .append(System.lineSeparator())
-                                .append("========== Menu: ==========")
-                                .append(System.lineSeparator())
-                                .append("0. Add New Item")
-                                .append(System.lineSeparator())
-                                .append("1. Show All Items")
-                                .append(System.lineSeparator())
-                                .append("2. Edit Item")
-                                .append(System.lineSeparator())
-                                .append("3. Delete Item")
-                                .append(System.lineSeparator())
-                                .append("4. Find Item By ID")
-                                .append(System.lineSeparator())
-                                .append("5. Find Items By Name")
-                                .append(System.lineSeparator())
-                                .append("6. Exit Program")
-                                .append(System.lineSeparator())
-                                .append("===========================")
-                                .append(System.lineSeparator())
+                                .append(menu)
                                 .toString()
                 )
         );
