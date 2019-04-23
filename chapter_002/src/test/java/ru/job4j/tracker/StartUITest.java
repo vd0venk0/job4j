@@ -76,8 +76,8 @@ public class StartUITest {
         // Создаём StartUI и вызываем метод init().
         new StartUI(input, tracker).init();
         // Проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
-        String name = tracker.findAll()[0].getName();
-        assertThat(name, is("test name"));
+        Item item = tracker.findAll()[0]; // Получаем нулевой элемент.
+        assertThat(item.getName(), is("test name"));
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -86,19 +86,19 @@ public class StartUITest {
                                 .append("++++++++++++ Добавление новой заявки ++++++++++++++")
                                 .append(System.lineSeparator())
                                 .append("+++++ Создана новая заявка с ID : ")
-                                .append(tracker.findAll()[0].getId())
+                                .append(item.getId())
                                 .append(" +++++")
                                 .append(System.lineSeparator())
                                 .append("---------------------------")
                                 .append(System.lineSeparator())
                                 .append("Имя заявки: ")
-                                .append(name)
+                                .append(item.getName())
                                 .append(System.lineSeparator())
                                 .append("Описание:   ")
-                                .append(tracker.findAll()[0].getDescription())
+                                .append(item.getDescription())
                                 .append(System.lineSeparator())
                                 .append("ID заявки:  ")
-                                .append(tracker.findAll()[0].getId())
+                                .append(item.getId())
                                 .append(System.lineSeparator())
                                 .append("---------------------------")
                                 .append(System.lineSeparator())
