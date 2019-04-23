@@ -76,7 +76,8 @@ public class StartUITest {
         // Создаём StartUI и вызываем метод init().
         new StartUI(input, tracker).init();
         // Проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
-        assertThat(tracker.findAll()[0].getName(), is("test name"));
+        String name = tracker.findAll()[0].getName();
+        assertThat(name, is("test name"));
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -91,7 +92,7 @@ public class StartUITest {
                                 .append("---------------------------")
                                 .append(System.lineSeparator())
                                 .append("Имя заявки: ")
-                                .append(tracker.findAll()[0].getName())
+                                .append(name)
                                 .append(System.lineSeparator())
                                 .append("Описание:   ")
                                 .append(tracker.findAll()[0].getDescription())
