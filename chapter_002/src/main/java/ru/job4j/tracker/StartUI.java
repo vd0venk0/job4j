@@ -38,26 +38,32 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
-        boolean exit = false;
-        while (!exit) {
-            this.showMenu();
-            String answer = this.input.ask("Select menu item : ");
-            if (ADD.equals(answer)) {
-                this.createItem();
-            } else if (SHOWALL.equals(answer)) {
-                this.showAllItems();
-            } else if (EDIT.equals(answer)) {
-                this.editTheItem();
-            } else if (DELETE.equals(answer)) {
-                this.deleteTheItem();
-            } else if (FINDBYID.equals(answer)) {
-                this.findItemByID();
-            } else if (FINDBYNAME.equals(answer)) {
-                this.findItemByName();
-            } else if (EXIT.equals(answer)) {
-                exit = true;
-            }
-        }
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        menu.fillActions();
+        do {
+            menu.show();
+            menu.select(Integer.valueOf(input.ask("select:")));
+        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+//        boolean exit = false;
+//        while (!exit) {
+//            this.showMenu();
+//            String answer = this.input.ask("Select menu item : ");
+//            if (ADD.equals(answer)) {
+//                this.createItem();
+//            } else if (SHOWALL.equals(answer)) {
+//                this.showAllItems();
+//            } else if (EDIT.equals(answer)) {
+//                this.editTheItem();
+//            } else if (DELETE.equals(answer)) {
+//                this.deleteTheItem();
+//            } else if (FINDBYID.equals(answer)) {
+//                this.findItemByID();
+//            } else if (FINDBYNAME.equals(answer)) {
+//                this.findItemByName();
+//            } else if (EXIT.equals(answer)) {
+//                exit = true;
+//            }
+//        }
     }
 
     /**
@@ -75,18 +81,20 @@ public class StartUI {
         System.out.println("===========================");
     }
 
-    /**
-     * Метод реализует добавление новой заявки в хранилище.
-     */
-    private void createItem() {
-        System.out.println("++++++++++++ Добавление новой заявки ++++++++++++++");
-        String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите описание заявки :");
-        Item item = new Item(name, desc);
-        this.tracker.add(item);
-        System.out.println("+++++ Создана новая заявка с ID : " + item.getId() + " +++++");
-        item.printItem();
-    }
+//    /**
+//     * Метод реализует добавление новой заявки в хранилище.
+//     */
+//    private void createItem() {
+//        System.out.println("++++++++++++ Добавление новой заявки ++++++++++++++");
+//        String name = this.input.ask("Введите имя заявки :");
+//        String desc = this.input.ask("Введите описание заявки :");
+//        Item item = new Item(name, desc);
+//        this.tracker.add(item);
+//        System.out.println("+++++ Создана новая заявка с ID : " + item.getId() + " +++++");
+//        item.printItem();
+//    }
+
+// тут может быть внутренний класс аддитем!!!!
 
     /**
      * Метод реализует отображение списка всех заявок.
