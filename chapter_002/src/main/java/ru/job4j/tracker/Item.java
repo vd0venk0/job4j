@@ -1,5 +1,12 @@
 package ru.job4j.tracker;
 
+/**
+ * Item.
+ * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com)
+ * @version $Id$
+ * @since 0.1.
+ */
+
 public class Item {
 
     private String id;
@@ -38,9 +45,9 @@ public class Item {
         System.out.println("---------------------------");
     }
 
-    public long getCreate() {
-        return this.create;
-    }
+//    public long getCreate() {
+//        return this.create;
+//    }
 
     public String getId() {
         return this.id;
