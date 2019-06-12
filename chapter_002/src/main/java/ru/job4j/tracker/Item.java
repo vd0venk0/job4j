@@ -45,10 +45,6 @@ public class Item {
         System.out.println("---------------------------");
     }
 
-//    public long getCreate() {
-//        return this.create;
-//    }
-
     public String getId() {
         return this.id;
     }

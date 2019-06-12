@@ -184,8 +184,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("++++++++++++++++ Удаление заявки ++++++++++++++++++");
             String id = input.ask("Введите ID удаляемой заявки: ");
-            if (tracker.findById(id) != null) {
-                tracker.delete(id);
+            if (tracker.delete(id)) {
                 System.out.println("Заявка ID = " + id + " успешно удалена.");
             } else {
                 System.out.println("Заявка ID = " + id + " не найдена.");
@@ -280,12 +279,7 @@ public class MenuTracker {
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            boolean exit = false;
-            while (!exit) {
-                if (key == key()) {
-                    exit = true;
-                }
-            }
+            System.out.println("The End.");
         }
         @Override
         public String info() {

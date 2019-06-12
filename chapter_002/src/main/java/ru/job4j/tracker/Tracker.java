@@ -53,7 +53,8 @@ public class Tracker {
      * Метод должен удалить ячейку в массиве this.items.
      * @param id ID удаляемого элемента.
      */
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean resultOfDelete = false;
         // Ищем элемент по id и получаем его индекс.
         Item result = null;
         int index = 0;
@@ -72,6 +73,8 @@ public class Tracker {
             this.items[index] = null;
             position--;
         }
+        if (result != null) resultOfDelete = true;
+        return resultOfDelete;
     }
 
     /**

@@ -28,12 +28,14 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
+        String answer;
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillActions();
         do {
             menu.show();
-            menu.select(Integer.valueOf(this.input.ask("Select menu item : ")));
-        } while (!"y".equals(this.input.ask("Exit?([n]/y): ")));
+            answer = this.input.ask("Select menu item : ");
+            menu.select(Integer.valueOf(answer));
+        } while (!"6".equals(answer));
     }
 
     /**
