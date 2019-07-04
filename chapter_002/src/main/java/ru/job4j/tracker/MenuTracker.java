@@ -8,7 +8,6 @@ import java.util.*;
  * @version $Id$
  * @since 0.1.
  */
-
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
@@ -19,7 +18,7 @@ public class MenuTracker {
     private static final String DELETE = "3"; // Удаление заявки.
     private static final String FINDBYID = "4"; // Поиск заявки по ID.
     private static final String FINDBYNAME = "5"; // Поиск заявки по имени.
-    private static final String EXIT = "6"; // Выход из меню.
+    public static final String EXIT = "6"; // Выход из меню.
 
     /**
      * Конструктор.
@@ -61,6 +60,14 @@ public class MenuTracker {
                 System.out.println(action.info());
             }
         }
+    }
+
+    /**
+     * Метод для определения размера списка меню.
+     * @return Размер списка меню.
+     */
+    public int getActionsLenght() {
+        return this.actions.size();
     }
 
     /**

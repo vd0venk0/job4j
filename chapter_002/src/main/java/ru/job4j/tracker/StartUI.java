@@ -1,5 +1,8 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * StartUI.
  * Реализация пользовательского интерфейса.
@@ -28,14 +31,18 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
-        String answer;
+        int answerKey;
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        List<Integer> range = new ArrayList<>();
         menu.fillActions();
+        for (int i =0; i < menu.getActionsLenght(); i++) {
+            range.add(i);
+        }
         do {
             menu.show();
-            answer = this.input.ask("Select menu item : ");
-            menu.select(Integer.valueOf(answer));
-        } while (!"6".equals(answer));
+            answerKey = input.ask("Select menu item : ", range);
+            menu.select(answerKey);
+        } while (!menu.EXIT.equals(Integer.toString(answerKey)));
     }
 
     /**
@@ -43,6 +50,6 @@ public class StartUI {
      * @param args Аргументы.
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
