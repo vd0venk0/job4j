@@ -35,12 +35,12 @@ public class StartUI {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
         menu.fillActions();
-        for (int i =0; i < menu.getActionsLenght(); i++) {
+        for (int i = 0; i < menu.getActionsLenght(); i++) {
             range.add(i);
         }
         do {
             menu.show();
-            answerKey = input.ask("Select menu item : ", range);
+            answerKey = Integer.valueOf(input.ask("Select menu item : ", range));
             menu.select(answerKey);
         } while (!menu.EXIT.equals(Integer.toString(answerKey)));
     }
@@ -50,6 +50,6 @@ public class StartUI {
      * @param args Аргументы.
      */
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
 }

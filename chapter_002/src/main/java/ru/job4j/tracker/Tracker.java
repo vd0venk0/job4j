@@ -74,7 +74,9 @@ public class Tracker {
             this.items[index] = null;
             position--;
         }
-        if (result != null) resultOfDelete = true;
+        if (result != null) {
+            resultOfDelete = true;
+        }
         return resultOfDelete;
     }
 

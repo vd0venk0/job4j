@@ -8,20 +8,32 @@ import java.util.List;
  * @version $Id$
  * @since 0.1.
  */
-public class ValidateInput extends ConsoleInput {
-    public int ask(String question, List<Integer> range) {
+public class ValidateInput implements Input {
+
+    private final Input input;
+
+    public ValidateInput(final Input input) {
+        this.input = input;
+    }
+
+    @Override
+    public String ask(String question) {
+        return this.input.ask(question);
+    }
+
+    public String ask(String question, List<Integer> range) {
         boolean invalid = true;
         int value = -1;
         do {
             try {
-                value =  super.ask(question, range);
+                value =  Integer.valueOf(this.input.ask(question, range));
                 invalid = false;
-            } catch (NumberFormatException nfe) {
-                System.out.println("Incorrect input data. Please enter correct data again.");
             } catch (MenuOutException moe) {
                 System.out.println("Out of menu range. Please enter correct data again.");
+            } catch (NumberFormatException nfe) {
+                System.out.println("Incorrect input data. Please enter correct data again.");
             }
         } while (invalid);
-        return value;
+        return Integer.toString(value);
     }
 }

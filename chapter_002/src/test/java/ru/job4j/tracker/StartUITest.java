@@ -24,8 +24,6 @@ public class StartUITest {
      * Уменьшаем объем тестов.
      */
     final StringBuilder menu = new StringBuilder()
-            .append("========== Menu: ==========")
-            .append(System.lineSeparator())
             .append("0. Add New Item")
             .append(System.lineSeparator())
             .append("1. Show All Items")
@@ -38,9 +36,7 @@ public class StartUITest {
             .append(System.lineSeparator())
             .append("5. Find Items By Name")
             .append(System.lineSeparator())
-            .append("6. Exit Program")
-            .append(System.lineSeparator())
-            .append("===========================")
+            .append("6. Exit")
             .append(System.lineSeparator());
 
     /**
@@ -101,6 +97,8 @@ public class StartUITest {
                                 .append("---------------------------")
                                 .append(System.lineSeparator())
                                 .append(menu)
+                                .append("The End.")
+                                .append(System.lineSeparator())
                                 .toString()
                 )
         );
@@ -116,7 +114,6 @@ public class StartUITest {
         Item item = tracker.add(new Item("test name", "desc"));
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
         new StartUI(input, tracker).init();
-//        assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -129,6 +126,8 @@ public class StartUITest {
                                 .append(" успешно изменена.")
                                 .append(System.lineSeparator())
                                 .append(menu)
+                                .append("The End.")
+                                .append(System.lineSeparator())
                                 .toString()
                 )
         );
@@ -158,6 +157,8 @@ public class StartUITest {
                                 .append(" успешно удалена.")
                                 .append(System.lineSeparator())
                                 .append(menu)
+                                .append("The End.")
+                                .append(System.lineSeparator())
                                 .toString()
                 )
         );
@@ -199,6 +200,8 @@ public class StartUITest {
                                 .append("---------------------------")
                                 .append(System.lineSeparator())
                                 .append(menu)
+                                .append("The End.")
+                                .append(System.lineSeparator())
                                 .toString()
                 )
         );
@@ -216,7 +219,6 @@ public class StartUITest {
         Item item03 = tracker.add(new Item("testName", "description03"));
         Input input = new StubInput(new String[] {"5", "testName02", "6"});
         new StartUI(input, tracker).init();
-//        assertThat(tracker.findByName("testName02")[0], is(item02));
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -242,6 +244,8 @@ public class StartUITest {
                                 .append("---------------------------")
                                 .append(System.lineSeparator())
                                 .append(menu)
+                                .append("The End.")
+                                .append(System.lineSeparator())
                                 .toString()
                 )
         );
@@ -276,6 +280,8 @@ public class StartUITest {
                                 .append("---------------------------")
                                 .append(System.lineSeparator())
                                 .append(menu)
+                                .append("The End.")
+                                .append(System.lineSeparator())
                                 .toString()
                 )
         );

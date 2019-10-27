@@ -18,7 +18,7 @@ public class ConsoleInput implements Input {
         return scanner.nextLine();
     }
 
-    public int ask(String question, List<Integer> range) {
+    public String ask(String question, List<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : range) {
@@ -28,7 +28,7 @@ public class ConsoleInput implements Input {
             }
         }
         if (exist) {
-            return key;
+            return Integer.toString(key);
         } else {
             throw new MenuOutException("Out of menu range.");
         }

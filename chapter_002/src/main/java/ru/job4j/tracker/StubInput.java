@@ -11,13 +11,7 @@ import java.util.List;
  */
 public class StubInput implements Input {
     /**
-     * Это поле содержит последовательность ответов пользователя.
-     * Например, если пользователь
-     * хочет выбрать добавление новой заявки ему нужно ввести:
-     * 0 - выбор пункта меню "добавить новую заявку".
-     * name - имя заявки
-     * desc - описание заявки
-     * y - выйти из трекера.
+     * Массив строк - последовательность ответов пользователя.
      */
     private final String[] value;
 
@@ -48,7 +42,8 @@ public class StubInput implements Input {
      * Реализация метода ask.
      */
     @Override
-    public int ask(String question, List<Integer> range) {
-        return -1;
+    public String ask(String question, List<Integer> range) {
+//        return -2;
+        return this.value[this.position++];
     }
 }

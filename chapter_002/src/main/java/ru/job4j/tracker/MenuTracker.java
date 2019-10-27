@@ -34,13 +34,13 @@ public class MenuTracker {
      * Метод заполняет массив.
      */
     public void fillActions() {
-        this.actions.add(new AddItem(0, "Add program"));
-        this.actions.add(new ShowAllItems(1, "Show all items"));
-        this.actions.add(new EditTheItem(2, "Edit item"));
-        this.actions.add(new DeleteTheItem(3, "Delete item"));
-        this.actions.add(new FindItemByID(4, "Find Item By ID"));
-        this.actions.add(new FindItemByName(5, "Find Item By Name"));
-        this.actions.add(new ExitProgram(6, "Exit"));
+        this.actions.add(new AddItem(0, "0. Add New Item"));
+        this.actions.add(new ShowAllItems(1, "1. Show All Items"));
+        this.actions.add(new EditTheItem(2, "2. Edit Item"));
+        this.actions.add(new DeleteTheItem(3, "3. Delete Item"));
+        this.actions.add(new FindItemByID(4, "4. Find Item By ID"));
+        this.actions.add(new FindItemByName(5, "5. Find Items By Name"));
+        this.actions.add(new ExitProgram(6, "6. Exit"));
     }
 
     /**
@@ -167,7 +167,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return ("2. Edit item");
+            return ("2. Edit Item");
         }
     }
 
@@ -200,7 +200,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return ("3. Delete item");
+            return ("3. Delete Item");
         }
     }
 
@@ -232,7 +232,7 @@ public class MenuTracker {
         }
         @Override
         public String info() {
-            return ("4. Find Item by ID");
+            return ("4. Find Item By ID");
         }
     }
 
@@ -266,7 +266,7 @@ public class MenuTracker {
         }
         @Override
         public String info() {
-            return ("5. Find Item by Name");
+            return ("5. Find Items By Name");
         }
     }
 
