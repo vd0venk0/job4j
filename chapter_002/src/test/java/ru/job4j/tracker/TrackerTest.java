@@ -52,7 +52,7 @@ public class TrackerTest {
         tracker.add(third);
         tracker.delete(first.getId());
 
-//        assertThat(tracker.findAll()[0], is(second));
+        assertThat(tracker.findAll()[0], is(second));
     }
 
     /**
