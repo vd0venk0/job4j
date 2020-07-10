@@ -8,7 +8,9 @@ import java.lang.Math;
  * @author Aleksey Vdovenko (a.a.vd0venk0@gmail.com).
  */
 public class Point {
-
+    /**
+     * Внутренние поля.
+     */
     private int x;
     private int y;
 
@@ -31,5 +33,14 @@ public class Point {
         return Math.sqrt(
                 Math.pow((double) (this.x - that.x), 2D) + Math.pow((double) (this.y - that.y), 2D)
         );
+    }
+
+    /**
+     * Считаем расстояние между точками.
+     */
+    public static void main(String[] args) {
+        Point a = new Point(0, 0);
+        Point b = new Point(3, 4);
+        System.out.println(a.distanceTo(b));
     }
 }
