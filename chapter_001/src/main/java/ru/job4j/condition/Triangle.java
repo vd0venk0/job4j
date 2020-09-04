@@ -9,14 +9,14 @@ import java.lang.Math;
  */
 public class Triangle {
 
-    private Point a;
-    private Point b;
-    private Point c;
+    private Point first;
+    private Point second;
+    private Point third;
 
-    public Triangle(Point a, Point b, Point c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+    public Triangle(Point ap, Point bp, Point cp) {
+        this.first = ap;
+        this.second = bp;
+        this.third = cp;
     }
 
     /**
@@ -36,9 +36,9 @@ public class Triangle {
      */
     public double area() {
         double rsl = -1; // Площадь треугольника (-1 - признак несущетвующего треугольника).
-        double ab = this.a.distanceTo(this.b);
-        double ac = this.a.distanceTo(this.c);
-        double bc = this.b.distanceTo(this.c);
+        double ab = first.distanceTo(second);
+        double ac = first.distanceTo(third);
+        double bc = second.distanceTo(third);
         double p = this.period(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
             rsl = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));

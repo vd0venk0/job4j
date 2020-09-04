@@ -16,12 +16,12 @@ public class Point {
 
     /**
      * Текущая точка.
-     * @param x Координата x для текущей точки.
-     * @param y Координата y для текущей точки.
+     * @param first Координата x для текущей точки.
+     * @param second Координата y для текущей точки.
      */
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Point(int first, int second) {
+        this.x = first;
+        this.y = second;
     }
 
     /**
